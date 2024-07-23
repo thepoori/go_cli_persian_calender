@@ -6,9 +6,9 @@ import (
 	"github.com/wsxiaoys/terminal/color"
 	)	
 	
-var not_kabise = [12]int{ 0 , 31 , 59 , 90 , 120 , 151 , 181 , 212 , 243 , 273 , 304 , 334} 
+var not_leap = [12]int{ 0 , 31 , 59 , 90 , 120 , 151 , 181 , 212 , 243 , 273 , 304 , 334} 
 	
-var kabise = [12]int{0 , 31 , 60 , 91 , 121 , 152 , 182 , 213 , 244 , 274 , 305 , 335}
+var leap = [12]int{0 , 31 , 60 , 91 , 121 , 152 , 182 , 213 , 244 , 274 , 305 , 335}
 	
 var persian_month = map[int]string{
 		1 : "farvardin",2 : "ordibehesht",3 : "khordad",4 : "tir",5 : "mordad",6 : "shahrivar",7 : "mehr",8 : "aban",9 : "azar",10 : "dey" ,11 : "bahman",	12 : "esfand",
@@ -38,7 +38,7 @@ func print_str_time()string{
 	var month_days int
 	y , m , d := time.Now().Date()
 	var year , month , day int
-	if is_kabise(y){
+	if is_leap(y){
 		year , month , day = calc(y, int(m) , d , true)
 	}else{
 		year , month , day = calc(y, int(m) , d , false)
@@ -49,7 +49,7 @@ func print_str_time()string{
 	}else if month > 6{
 		month_days = 30
 	}else if month == 12 {
-		if is_kabise(y) {
+		if is_leap(y) {
 			month_days = 29
 		}else{
 			month_days = 30
@@ -74,13 +74,13 @@ func print_str_time()string{
 		return print_str
 }
 
-func calc(m_year int, m_month int , m_day int ,is_kabise bool) (int,  int, int){
+func calc(m_year int, m_month int , m_day int ,is_leap bool) (int,  int, int){
 	var month int
 	var year int
 	var date int
 	var diff_between_days int
-	if !is_kabise{
-		date = not_kabise[m_month - 1] + m_day
+	if !is_leap{
+		date = not_leap[m_month - 1] + m_day
 		if date > 79{
 			date = date - 79
 			if date <= 186{
@@ -121,8 +121,8 @@ func calc(m_year int, m_month int , m_day int ,is_kabise bool) (int,  int, int){
 			}		
 			year = m_year - 622
 		}	
-	}else if is_kabise{
-		date = kabise[m_month - 1] + m_day
+	}else if is_leap{
+		date = leap[m_month - 1] + m_day
 		if(m_year >= 1996){
 			diff_between_days = 79
 		}else{
@@ -173,7 +173,7 @@ func calc(m_year int, m_month int , m_day int ,is_kabise bool) (int,  int, int){
 
 
 
-func is_kabise(year int) bool{
+func is_leap(year int) bool{
 	if year %4 == 0{
 		return true
 	}else{
