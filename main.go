@@ -61,7 +61,7 @@ func print_str_time() (string) {
 
 	for i := 1; i <= month_days; i++ {
 		if i == day  {
-			print_str += color.Sprintf("@{Wk}%2d ", i)
+			print_str += color.Sprintf("@{?}%2d ", i)
 		} else {
 			print_str += fmt.Sprintf("%2d ", i)
 		}
