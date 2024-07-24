@@ -23,7 +23,7 @@ func main() {
 		},
 		cli.StringFlag{
 			Name:        "brtihday, b",
-			Usage:       "calc birthday",
+			Usage:       "age calculator",
 			Destination: &birhday,
 		},
 	}
