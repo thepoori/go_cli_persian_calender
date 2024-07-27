@@ -20,7 +20,18 @@ var Weekdays = map[int]string{
 	7: "Fr",
 }
 var persian_month = map[int]string{
-	1: "farvardin", 2: "ordibehesht", 3: "khordad", 4: "tir", 5: "mordad", 6: "shahrivar", 7: "mehr", 8: "aban", 9: "azar", 10: "dey", 11: "bahman", 12: "esfand",
+	1: "farvardin",
+	2: "ordibehesht",
+	3: "khordad",
+	4: "tir",
+	5: "mordad",
+	6: "shahrivar",
+	7: "mehr",
+	8: "aban",
+	9: "azar",
+	10: "dey",
+	11: "bahman",
+	12: "esfand",
 }
 
 func print_str_time() (string) {
